@@ -1,15 +1,25 @@
-import { Cormorant_Garamond, Jost } from 'next/font/google';
+import { Playfair_Display, Jost, Dancing_Script } from 'next/font/google';
 import './globals.css';
 import { SITE_URL, STORE } from '@/lib/config';
 
-const serif = Cormorant_Garamond({
+// Títulos: serifada de alto contraste, com itálico
+const serif = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-serif',
   display: 'swap',
 });
+
+// Texto corrido: sem serifa limpa e redonda
 const sans = Jost({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
+
+// Só para a logo "Dela's"
+const script = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-script',
+  display: 'swap',
+});
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -22,7 +32,7 @@ export const viewport = { width: 'device-width', initialScale: 1, themeColor: '#
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="pt-BR" className={`${serif.variable} ${sans.variable} ${script.variable}`}>
       <body>{children}</body>
     </html>
   );
